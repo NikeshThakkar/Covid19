@@ -1,0 +1,123 @@
+ <ngx-spinner [type]="spinnerType"></ngx-spinner> 
+<mat-card class="header shadow-lg">
+    <mat-card-title>COVID-19</mat-card-title>
+    <mat-card-title>India</mat-card-title>
+</mat-card>  
+ 
+  <mat-grid-list cols="4" rowHeight="4:3" >
+
+    <mat-grid-tile> 
+      <mat-card class="cards shadow-lg" style="border-bottom:20px solid red;">
+        <mat-card-subtitle class="square">CONFIRM</mat-card-subtitle>
+        <mat-card-title class="square1" [countUp]="totalRecords?.confirmed">{{totalRecords?.confirmed}}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-card class="cards shadow-lg" style="border-bottom:20px solid blue;" >
+        <mat-card-subtitle class="square">ACTIVE</mat-card-subtitle>
+        <mat-card-title class="square1" [countUp]="totalRecords?.active">{{totalRecords?.active}}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile> 
+  
+    <mat-grid-tile> 
+     <mat-card class="cards shadow-lg" style="border-bottom:20px solid rgb(25, 221, 25);">
+       <mat-card-subtitle class="square">RECOVER</mat-card-subtitle>
+       <mat-card-title class="square1" [countUp]="totalRecords?.recovered">{{totalRecords?.recovered}}</mat-card-title>
+     </mat-card>
+    </mat-grid-tile> 
+  
+    <mat-grid-tile> 
+      <mat-card class="cards shadow-lg" style="border-bottom:20px solid black;">
+        <mat-card-subtitle class="square">DEATHS</mat-card-subtitle>
+        <mat-card-title class="square1" [countUp]="totalRecords?.deaths">{{totalRecords?.deaths}}</mat-card-title>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list> 
+
+<hr>
+    <mat-card class="shadow-lg">
+     <div class="form-inline" style="font-weight: bold;" >
+        <label>Select Case Type : </label>
+      
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" id="c" value="c"  #c (click)="updateChart(c)"  name="caseType" [checked]="checked">
+          <label for="c" class="form-label ">Confirmed</label>
+        </div>
+      
+      
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" id="a" value="a" (click)="updateChart(a)"  #a  name="caseType" >
+          <label for="a" class="form-label">Active</label>
+        </div>
+      
+      
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" id="r" value="r" (click)="updateChart(r)" #r  name="caseType" >
+          <label for="r" class="form-label">Recovered</label>
+        </div>
+      
+      
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" id="d" value="d" (click)="updateChart(d)" #d  name="caseType" >
+          <label for="d" class="form-label">Deaths</label>
+        </div>
+     </div>
+    
+  
+      <div class="row">
+        <div class="col shadow-lg">
+          <google-chart [type]= "chart.ColumnChart" [options]="chart.options" style="width:100%;" [data]="datatable"></google-chart>
+        </div>
+        <div class="col shadow-lg">
+          <google-chart [type]= "chart.PieChart" [options]="chart.options" style="width:100%;" [data]="datatable"></google-chart>
+        </div>
+      </div>
+    </mat-card>
+
+ 
+ <mat-card class="state-header">
+   <mat-card-subtitle >State Wise Records</mat-card-subtitle>
+ </mat-card>
+ 
+ 
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="State">
+      <mat-header-cell *matHeaderCellDef style="color: blueviolet;font-weight: bold;"> STATE </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-stroked-button color="primary" (click)="openCityDialog(element?.state)" style="border-left:20px solid blueviolet;">{{element?.state}} </button></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Confirm">
+      <mat-header-cell *matHeaderCellDef style="color: red;font-weight: bold;"> CASES </mat-header-cell>
+      <mat-cell *matCellDef="let element" ><button mat-stroked-button  [countUp]="element?.confirmed" style="border-left:20px solid red;">{{element?.confirmed}}</button> </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="Active">
+      <mat-header-cell *matHeaderCellDef style="color: blue;font-weight: bold;"> ACTIVE </mat-header-cell>
+      <mat-cell *matCellDef="let element" ><button mat-stroked-button  [countUp]="element?.active" style="border-left:20px solid blue;">{{element?.active}} </button></mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="Recoverd">
+      <mat-header-cell *matHeaderCellDef style="color: rgb(25, 221, 25);font-weight: bold;"> RECOVERED </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button mat-stroked-button  [countUp]="element?.recovered" style="border-left:20px solid rgb(25, 221, 25);">{{element?.recovered}} </button></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Deaths">
+      <mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;"> DEATHS </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-stroked-button  [countUp]="element?.deaths" style="border-left:20px solid black;"> {{element?.deaths}} </button></mat-cell>
+    </ng-container>
+    
+    <mat-header-row *matHeaderRowDef="Columns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: Columns;"></mat-row>
+  </mat-table> 
+
+
+<mat-card  class="shadow-lg" style="border-bottom:20px solid #60f7c5;">
+
+  <mat-card-subtitle class="footer">
+    <a class="linkedin" href="https://www.linkedin.com/in/nikesh-thakkar-a2a601153/" target="_blank"><i class="fa fa-linkedin-square"  aria-hidden="true" style="font-size:24px;padding-right: 5px;"></i></a>
+    <a class="github" href="https://github.com/NikeshThakkar" target="_blank"><i class="fa fa-github" aria-hidden="true"  style="font-size:24px;padding-right: 5px;"></i></a>
+    <a class="insta" href="https://www.instagram.com/_thakkar_niku24" target="_blank"><i class="fa fa-instagram" aria-hidden="true"  style="font-size:24px;padding-right: 5px;"></i></a>
+    Created By Nikesh J Thakkar
+  </mat-card-subtitle>
+</mat-card> 

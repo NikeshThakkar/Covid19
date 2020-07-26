@@ -1,0 +1,43 @@
+<mat-card class="header shadow-lg">
+  <mat-card-title>AFECTED DISTRICT </mat-card-title><hr>
+  <mat-card-subtitle style="font-weight: lighter;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+    {{this.data.data}}
+  </mat-card-subtitle>
+</mat-card>
+
+<hr>
+<mat-table [dataSource]="cityRecords" class="mat-elevation-z8">
+  <ng-container matColumnDef="district" >
+    <mat-header-cell *matHeaderCellDef style="color: blueviolet;font-weight: bold;padding: 10px;"> District </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="padding: 10px;"><button mat-stroked-button color="primary"  style="border-bottom:5px solid blueviolet;border-radius: 15px;">{{element?.district}} </button></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="confirm"  >
+    <mat-header-cell *matHeaderCellDef style="color: red;font-weight: bold;padding: 10px;"> CASES </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="padding: 10px;"><button mat-stroked-button  [countUp]="element?.confirmed" style="border-bottom:5px solid red;border-radius: 15px;">{{element?.confirmed}}</button> </mat-cell>
+  </ng-container>
+  
+  <ng-container matColumnDef="active"  >
+    <mat-header-cell *matHeaderCellDef style="color: blue;font-weight: bold;padding: 10px;"> ACTIVE </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="padding: 10px;" ><button mat-stroked-button  [countUp]="element?.active" style="border-bottom:5px solid blue;border-radius: 15px;">{{element?.active}} </button></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="recoverd"  >
+    <mat-header-cell *matHeaderCellDef style="color: rgb(25, 221, 25);font-weight: bold;padding: 10px;"> RECOVERED </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="padding: 10px;"> <button mat-stroked-button  [countUp]="element?.recovered" style="border-bottom:5px solid rgb(25, 221, 25);border-radius: 15px;">{{element?.recovered}} </button></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="deceased"  >
+    <mat-header-cell *matHeaderCellDef style="color: black;font-weight: bold;padding: 10px;"> DEATHS </mat-header-cell>
+    <mat-cell *matCellDef="let element" style="padding: 10px;"><button mat-stroked-button  [countUp]="element?.deceased" style="border-bottom:5px solid black;border-radius: 15px;"> {{element?.deceased}} </button></mat-cell>
+  </ng-container>
+  
+  <mat-header-row *matHeaderRowDef="Columns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: Columns;"></mat-row>
+</mat-table> 
+
+<hr>
+
+<div class="row" style="justify-content: right;">
+  <button mat-raised-button color="primary" (click)="close($event)">close</button>
+</div>

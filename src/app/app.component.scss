@@ -1,0 +1,62 @@
+.header {
+     text-align: center;
+     border-top:35px solid #60f7c5;
+     font-family: sans-serif;
+     font-weight: lighter;
+}
+.cards {
+    margin: 12px;
+    width: 6000px; 
+}  
+    
+.square {
+    padding:5px;
+    text-align: center;
+    font-weight: lighter;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.square1 {
+    text-align: center;
+    display: flex;
+    margin: auto;
+}
+.state-header {
+    color: whitesmoke;
+    text-align: center;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 50px;
+}
+.mat-table {
+    width: 100%;
+    display: inline-block;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.mat-stroked-button {
+    width:200px!important;
+    border-radius: 5px;
+    white-space: pre-wrap !important;
+}
+.footer {
+    text-align: right;
+    font-weight: lighter;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;  
+}
+.fa{
+    display: inline-block;
+   // box-sizing: border-box;
+}
+a {
+    color: inherit;
+}
+.linkedin:hover {
+    color: blue;
+}
+.github:hover {
+     color: black;
+}
+.insta:hover {
+    color: #b7358a;
+}
