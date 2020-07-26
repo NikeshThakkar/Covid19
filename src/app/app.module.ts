@@ -30,7 +30,7 @@ import { MaterialModule } from './material/material.module';
     CountUpModule,
     NgxSpinnerModule,
   ],
-  providers: [CovidserviceService, NgxSpinnerService ],
+  providers: [ ],
   entryComponents: [CitydataComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

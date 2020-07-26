@@ -13,7 +13,18 @@ import {MatCardModule,
      } from '@angular/material';
 
 @NgModule({
-
+   imports: [MatCardModule,
+     MatSelectModule,
+     MatDividerModule,
+     MatGridListModule,
+     MatTableModule,
+     MatButtonModule,
+     MatChipsModule,
+     MatProgressSpinnerModule,
+     MatIconModule,
+     MatRadioModule,
+     MatBottomSheetModule,
+     ],
   exports: [MatCardModule,
       MatSelectModule,
       MatDividerModule,
