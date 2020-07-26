@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleChartsModule } from 'angular-google-charts';
 import { CountUpModule } from 'ngx-countup';
-import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CitydataComponent } from './citydata/citydata.component';
@@ -30,7 +30,7 @@ import { MaterialModule } from './material/material.module';
     CountUpModule,
     NgxSpinnerModule,
   ],
-  providers: [CovidserviceService ],
+  providers: [CovidserviceService, NgxSpinnerService ],
   entryComponents: [CitydataComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
